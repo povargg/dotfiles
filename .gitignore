@@ -1,0 +1,8 @@
+*.bak
+__pycache__/
+/fish/fish_variables
+/fish/conf.d/fish_frozen_key_bindings.fish
+/mpd/database
+/mpd/log
+/mpd/state
+/mpd/playlists/
