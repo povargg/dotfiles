@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="202" viewBox="0 0 800 202" role="img" aria-labelledby="title desc">
+  <title id="title">rmpc theme palette</title>
+  <desc id="desc">Ten colors from the rmpc theme, labeled with their hex values.</desc>
+  <rect x=".5" y=".5" width="799" height="201" rx="12" fill="#1D2021" stroke="#665C54"/>
+  <g fill="#D5C4A1" font-family="monospace" font-size="20" text-anchor="middle">
+    <rect x="20" y="16" width="144" height="49" rx="6" fill="#1D2021" stroke="#665C54"/>
+    <text x="92" y="89">#1D2021</text>
+    <rect x="174" y="16" width="144" height="49" rx="6" fill="#665C54" stroke="#665C54"/>
+    <text x="246" y="89">#665C54</text>
+    <rect x="328" y="16" width="144" height="49" rx="6" fill="#D5C4A1" stroke="#665C54"/>
+    <text x="400" y="89">#D5C4A1</text>
+    <rect x="482" y="16" width="144" height="49" rx="6" fill="#DBBC7F" stroke="#665C54"/>
+    <text x="554" y="89">#DBBC7F</text>
+    <rect x="636" y="16" width="144" height="49" rx="6" fill="#E69875" stroke="#665C54"/>
+    <text x="708" y="89">#E69875</text>
+    <rect x="20" y="110" width="144" height="49" rx="6" fill="#A7C080" stroke="#665C54"/>
+    <text x="92" y="183">#A7C080</text>
+    <rect x="174" y="110" width="144" height="49" rx="6" fill="#83C092" stroke="#665C54"/>
+    <text x="246" y="183">#83C092</text>
+    <rect x="328" y="110" width="144" height="49" rx="6" fill="#7FBBB3" stroke="#665C54"/>
+    <text x="400" y="183">#7FBBB3</text>
+    <rect x="482" y="110" width="144" height="49" rx="6" fill="#D699B6" stroke="#665C54"/>
+    <text x="554" y="183">#D699B6</text>
+    <rect x="636" y="110" width="144" height="49" rx="6" fill="#E67E80" stroke="#665C54"/>
+    <text x="708" y="183">#E67E80</text>
+  </g>
+</svg>

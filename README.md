@@ -4,9 +4,13 @@
 
 ## Neovim
 
-POVVIM is based on LazyVim, with a custom start screen and the Aardvark Ink theme from Recol. Neogit handles Git, and HTML and Markdown files can be previewed live in the browser.
+POVVIM is built on LazyVim, with Aardvark Ink as the default palette. Recol can be added to switch colors from inside Neovim.
 
-![POVVIM start screen](assets/screenshots/nvim.webp)
+Changes can be staged and committed in Neogit, with CodeDiff for side-by-side comparisons. Live Preview keeps the browser up to date while editing HTML or Markdown, and Colorizer highlights hex codes in their own colors.
+
+A long list of arguments can be split across lines or joined again with TreeSJ. Todo Comments makes TODOs and FIXMEs easier to find. Compiler uses Overseer to run build tasks and show their output in Neovim.
+
+![Neovim with the Aardvark Ink theme](assets/screenshots/nvim.webp)
 
 ### Install on Linux
 
@@ -37,13 +41,15 @@ On first launch, lazy.nvim downloads the plugins. Run `:LazyHealth` to check dep
 
 ## rmpc
 
-The rmpc setup has a custom theme and Japanese tab names. The main view shows the queue next to the album cover, and CAVA has a tab of its own.
+The queue and album cover sit side by side, with custom icons for playback status and track ratings. The theme uses a charcoal background, muted greens and golds, and a pink progress bar.
 
-![rmpc next to CAVA](assets/screenshots/rmpc-cava.webp)
+![rmpc with the queue and album cover](assets/screenshots/rmpc-cava.webp)
+
+![Main colors from the rmpc theme](assets/rmpc-palette.svg)
 
 ### Install on Linux
 
-This configuration uses **rmpc 0.11.0** and a recent MPD installation. Kitty supports the cover-art protocol. For the glyphs shown here, use a Nerd Font and a Japanese-capable fallback such as Noto Sans CJK.
+This configuration uses **rmpc 0.11.0** and a recent MPD installation. Kitty supports the cover-art protocol. For the icons and text shown here, use a Nerd Font and a fallback such as Noto Sans CJK.
 
 ```bash
 sudo pacman -S --needed rmpc mpd mpc
@@ -71,14 +77,12 @@ rmpc
 If MPD was running before you edited its config, restart it with `systemctl --user restart mpd.service` before running `mpc update`. Use an output supported by your installation if you run a different audio stack. [MPD user manual](https://mpd.readthedocs.io/en/stable/user.html) · [rmpc installation guide](https://rmpc.mierak.dev/installation/)
 
 <details>
-<summary>Cover art, lyrics and the optional CAVA pane</summary>
+<summary>Cover art and lyrics</summary>
 
 - **Cover art:** Leave `album_art.method` on `Auto` and use a graphics-capable terminal like Kitty. Cover art comes from MPD’s music library.
 - **Lyrics:** The layout has a lyrics pane. Set `lyrics_dir` in `config.ron` to the location of your `.lrc` files.
-- **Integrated spectrum:** Install `cava`, uncomment the optional FIFO output in `mpd.conf` and restart MPD. rmpc reads `/tmp/mpd.fifo` at 44.1 kHz, 16-bit stereo. Keep the PipeWire output enabled for sound.
-- **Standalone spectrum:** Copy the [`cava/`](cava/) configuration into your CAVA config directory and launch `cava` in a separate terminal. It uses terminal bars, auto-detected audio input and a blue-to-rose gradient. To match the screenshot, save the original Amekoji palette as `themes/amekoji` in the CAVA config directory and set `theme = 'amekoji'` under `[color]`. [Amekoji palette](https://github.com/atif-1402/omarchy-amekoji-theme/blob/main/cava_theme)
 
-[rmpc configuration](https://rmpc.mierak.dev/configuration/) · [rmpc and CAVA setup](https://rmpc.mierak.dev/configuration/cava/)
+[rmpc configuration](https://rmpc.mierak.dev/configuration/)
 
 </details>
 
@@ -87,5 +91,15 @@ If MPD was running before you edited its config, restart it with `systemctl --us
 The terminal configs are based on end-4’s dotfiles. [Kitty](kitty/) · [fish](fish/) · [Starship](starship.toml)
 
 There’s also an MPD example for PipeWire and a few CAVA color presets. [MPD](mpd/) · [CAVA](cava/)
+
+<details>
+<summary>Setting up CAVA</summary>
+
+- **Standalone spectrum:** Copy the [`cava/`](cava/) configuration into your CAVA config directory and launch `cava` in a separate terminal. It uses terminal bars, auto-detected audio input and a blue-to-rose gradient. To match the screenshot, save the original Amekoji palette as `themes/amekoji` in the CAVA config directory and set `theme = 'amekoji'` under `[color]`. [Amekoji palette](https://github.com/atif-1402/omarchy-amekoji-theme/blob/main/cava_theme)
+- **Integrated spectrum:** Install `cava`, uncomment the optional FIFO output in `mpd.conf` and restart MPD. rmpc reads `/tmp/mpd.fifo` at 44.1 kHz, 16-bit stereo. Keep the PipeWire output enabled for sound.
+
+[rmpc and CAVA setup](https://rmpc.mierak.dev/configuration/cava/)
+
+</details>
 
 [Credits and licenses](THIRD_PARTY.md)
