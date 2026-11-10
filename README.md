@@ -1,31 +1,12 @@
-<div align="center">
-
-# Linux Dotfiles
-
-**POVVIM for coding. A custom rmpc setup for music.**
+# Linux dotfiles
 
 [English](README.md) · [Deutsch](docs/README.de.md) · [Русский](docs/README.ru.md)
 
-[Neovim](#neovim) · [rmpc](#rmpc) · [Repository layout](#repository-layout) · [Credits](#credits)
-
-</div>
-
-My Linux configuration for working in the terminal and listening to a local music library. POVVIM builds on LazyVim. I designed the rmpc layout and theme myself, with Japanese labels, a queue next to the cover art and a separate visualizer view.
-
 ## Neovim
 
-![POVVIM in Kitty with an ASCII dashboard and the Aardvark Ink palette](assets/screenshots/nvim.webp)
+POVVIM is based on LazyVim, with a custom start screen and the Aardvark Ink theme from Recol. Neogit handles Git, and HTML and Markdown files can be previewed live in the browser.
 
-### What’s included
-
-| Area | Configuration |
-| --- | --- |
-| Look and startup | A custom **POVVIM** ASCII header in the Snacks dashboard, with shortcuts for files, projects, recent files and session restore. The Aardvark Ink palette is already embedded in `init.lua`. |
-| Editing and search | LazyVim provides LSP integration, Treesitter, Blink completion, formatting infrastructure and the file and text pickers. No language-specific LazyVim extras are preselected. |
-| Web preview | Live Preview opens HTML, Markdown, AsciiDoc or SVG in a browser and updates while you edit. Colorizer highlights color codes in the buffer. |
-| Git | Neogit is bound to `<leader>gg`, with CodeDiff, Telescope and Baleia included as dependencies. |
-| Code and tasks | TreeSJ joins and splits syntax-aware blocks. Compiler and a pinned Overseer revision provide the build/run menu and a results pane. Install the compiler or runtime required by your project separately. |
-| Comments | Comment.nvim toggles comments, Todo Comments highlights annotations such as `TODO:` and `FIXME:`, and Comment Divider inserts section separators. |
+![POVVIM start screen](assets/screenshots/nvim.webp)
 
 ### Install on Linux
 
@@ -54,39 +35,11 @@ fi
 
 On first launch, lazy.nvim downloads the plugins. Run `:LazyHealth` to check dependencies, `:Lazy restore` to restore the versions recorded in `lazy-lock.json`, and `:LazyExtras` to add language tooling as needed. For later launches of the isolated profile, use `NVIM_APPNAME=povvim nvim` in Bash or `env NVIM_APPNAME=povvim nvim` in fish. [LazyVim installation guide](https://www.lazyvim.org/installation)
 
-### Useful commands
-
-| Key or command | Action |
-| --- | --- |
-| `<Space>gg` or `:Neogit` | Open the Git interface. |
-| `:LivePreview start` | Preview the current supported file in a browser. |
-| `<Space>m`, `<Space>j`, `<Space>s` | Toggle, join or split the block under the cursor. |
-| `:CompilerOpen`, `:CompilerToggleResults`, `:CompilerRedo` | Pick a build or run task, toggle results or rerun the last task. |
-| `gcc`, `gc` in Visual mode | Toggle a line comment or comment the selected lines. |
-| `:TodoQuickFix`, `:CommentDivider` | List TODO-style annotations or insert a comment divider. |
-| `<Space>uR` or `:RecolOpen` | Pick a different palette. The optional `recol` executable must be on `PATH`. |
-| `:RecolReload` | Reapply the theme block from this profile’s `init.lua`. |
-
-The embedded palette works immediately. The Recol picker writes between the `recol:start` and `recol:end` markers and the keymap reloads those highlights on selection. The active setup lives in [`nvim/`](nvim/). Older dashboard and color experiments live outside the active plugin directory in [`nvim/experiments/`](nvim/experiments/). [Recol](https://github.com/nlkli/recol)
-
 ## rmpc
 
-![Custom rmpc queue with Japanese labels and album art, next to a standalone CAVA spectrum](assets/screenshots/rmpc-cava.webp)
+The rmpc setup has a custom theme and Japanese tab names. The main view shows the queue next to the album cover, and CAVA has a tab of its own.
 
-### Layout and controls
-
-- **Home · 家庭** gives the queue 70% of the width, with album art and lyrics on the right. A custom header shows playback state, bitrate, volume, queue length and playback modes. The queue has a rating column backed by MPD stickers, plus artist, title, album and duration.
-- **Showcase · 見せる** places the queue, lyrics and cover art above an integrated CAVA spectrum. The screenshot shows the separate CAVA terminal on the left.
-- **Library views** include directories, playlists, artists, albums, album artists, genres and a case-insensitive tag search. The theme uses a dark background, warm borders and a pink progress bar.
-
-| Keys | Action |
-| --- | --- |
-| `Tab` / `Shift+Tab` | Cycle through the tabs. |
-| `1` to `7` | Jump to queue, directories, artists, album artists, albums, playlists or search. |
-| `j` / `k`, `h` / `l` | Move through lists and browser panes. |
-| `p`, `<` / `>`, `b` / `f` | Play or pause, switch tracks, or seek. |
-| `,` / `.`, `/` | Change volume or enter the filter. |
-| `Enter`, `C`, `~` | Play the selected queue track, jump to the current track, or show help. |
+![rmpc next to CAVA](assets/screenshots/rmpc-cava.webp)
 
 ### Install on Linux
 
@@ -129,20 +82,10 @@ If MPD was running before you edited its config, restart it with `systemctl --us
 
 </details>
 
-## Repository layout
+## Other configs
 
-Default Linux paths are shown below. Use your `XDG_CONFIG_HOME` in place of `~/.config` if set.
+The terminal configs are based on end-4’s dotfiles. [Kitty](kitty/) · [fish](fish/) · [Starship](starship.toml)
 
-| Path | What it contains | Config destination |
-| --- | --- | --- |
-| [`nvim/`](nvim/) | POVVIM, LazyVim specs, lockfile and archived experiments. | `~/.config/povvim/` or `~/.config/nvim/` |
-| [`rmpc/`](rmpc/) | Original Japanese-labeled client layout and matching RON theme. | `~/.config/rmpc/` |
-| [`mpd/`](mpd/) | Local PipeWire setup with an optional FIFO for rmpc. | `~/.config/mpd/mpd.conf` |
-| [`cava/`](cava/) | Terminal spectrum settings, gradient presets and upstream GLSL shaders. | `~/.config/cava/` |
-| [`kitty/`](kitty/) | end-4 based terminal config with ProFont IIx Nerd Font Mono at 14 pt, scrollback search and zoom shortcuts. The QuickShell include supplies desktop-matched colors when available. | `~/.config/kitty/` |
-| [`fish/`](fish/) | end-4 interactive shell setup with Starship, QuickShell colors and aliases. Includes a separate optional tty1 Hyprland helper. | `~/.config/fish/` |
-| [`starship.toml`](starship.toml) | end-4 two-line prompt with command duration, directory and Git branch. | `~/.config/starship.toml` |
+There’s also an MPD example for PipeWire and a few CAVA color presets. [MPD](mpd/) · [CAVA](cava/)
 
-## Credits
-
-POVVIM is based on LazyVim and its starter. Aardvark Ink is supplied by Recol. I designed the rmpc layout and theme using mierak’s rmpc client. Kitty, fish and Starship use end-4’s configuration as their base. The standalone CAVA configuration combines local settings with upstream examples, themes and shaders. Source and license details are collected in [Third-party credits](THIRD_PARTY.md).
+[Credits and licenses](THIRD_PARTY.md)
